@@ -1,6 +1,17 @@
 (ns clojure-sandbox.core (:gen-class))
 
+;; REPL helpers
+;; Reload file
+;; (use 'clojure-sandbox.core :reload)
+
+(defn say-hello
+  "Say hello to the given name"
+  [name]
+  (str "Welcome " name " to the world!"))
+
 (defn -main
-  "I don't do a whole lot."
+  "Welcome aliens on our world."
   [& args]
-  (println "Hello, World!"))
+  (map say-hello args))
+
+
