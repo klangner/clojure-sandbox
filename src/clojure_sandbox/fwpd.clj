@@ -34,3 +34,29 @@
 (defn glitter-filter
   [minimum-glitter records]
   (filter #(>= (:glitter-index %) minimum-glitter) records))
+
+;; Ex 1. Get names only
+(defn names
+  [records]
+  (map :name records))
+
+;; Ex 2. Append suspect to the database
+(defn append-suspect
+  [records new-suspect]
+  (conj records new-suspect))
+
+;; Ex 3. Validate record
+(defn validate
+  [record keys]
+  (every? identity
+    (map (fn [key] (not= nil (key record))) keys)))
+
+;; Ex 4. Write to CSV
+(defn record-to-string
+  [record]
+  (clojure.string/join "," (map #(% record) vamp-keys)))
+
+(defn to-csv
+  [records]
+  (clojure.string/join "\n"
+                       (map record-to-string records)))
